@@ -1,2 +1,0 @@
-# Codecept Mocha
-
