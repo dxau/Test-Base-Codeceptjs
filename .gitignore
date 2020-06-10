@@ -2,3 +2,5 @@ node_modules/
 _output/
 local.log
 .env
+browserstack.err
+output/

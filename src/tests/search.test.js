@@ -1,6 +1,5 @@
 Feature('search');
 
-Scenario('test something', (I) => {
+Scenario('Check page lodas', (I) => {
     I.amOnPage("https://google.com")
-    I.see("Google")
 });

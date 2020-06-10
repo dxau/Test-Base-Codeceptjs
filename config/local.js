@@ -1,64 +1,43 @@
-const common = require('./common-config.js')
-const browserstack = require('browserstack-local');
+const common = require('./config.common.js')
 var pjson = require('../package.json');
 
 const config = (user, key) => ({
     ...common,
-    WebDriver: {
-        host: 'hub.browserstack.com',
-        user: user,
-        key: key,
-        browser: 'chrome',
-        coloredLogs: true,
-        logLevel: 'info',
-    },
-
-    runner: 'local',
-    specs: [
-        './src/features/**/*.feature'
-    ],
-    capabilities: [
-        {
+    helpers: {
+        WebDriver: {
+            host: 'hub.browserstack.com',
+            user: user,
+            key: key,
+            coloredLogs: true,
+            logLevel: 'info',
             browser: 'chrome',
-            build: 'build',
-            project: pjson.project,
-            name: "name",
-            'browserstack.local': true
-        }
-    ],
-    plugins: {
-        screenshotOnFail: {
-            enabled: false
+            url: 'http://localhost',
+            capabilities: {
+                build: `${pjson.name} Local`,
+                project: pjson.name,
+                name: "name",
+            },
         },
     },
-    
-    bootstrap: (done) => {
-        return new Promise(function(resolve, reject){
-            exports.bs_local = new browserstack.Local();
-            exports.bs_local.start(
-                {
-                    'key': key,
-                    'localIdentifier': `${pjson.project}_${Date.now()}`
-                }, 
-                function(error) {
-                    if (error) {
-                        done()
-                        return reject();
-                    } else {
-                        console.log('Connected. Now testing...');
-                        done()
-                        resolve();
-                    }
-                }
-            );
-        });
+
+    plugins: {
+        wdio: {
+            enabled: true,
+            services: ['browserstack'],
+            user: user,
+            key: key,
+            forcedStop: true,
+            browserstackLocal: true,
+            capabilities: {
+                "browserstack.local": true,
+                "browserstack.localIdentifier": "test"
+            }
+        },
+        screenshotOnFail: {
+            enabled: true
+        }
     },
-    teardown: (done) => {
-        exports.bs_local.stop(() => {
-            console.log(('Closing local browserstack client'))
-            done()
-        })
-    }
+    bootstrap: null
 })
 
 module.exports = config;
