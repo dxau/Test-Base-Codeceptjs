@@ -1,0 +1,25 @@
+{
+  "name": "codecept-mocha",
+  "version": "1.0.0",
+  "description": "The test base for codecept and mocha",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@wdio/selenium-standalone-service": "^6.1.14",
+    "browserstack-local": "^1.4.5",
+    "codeceptjs": "^2.6.5",
+    "dotenv": "^8.2.0",
+    "ts-lint": "^4.5.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "scripts": {
+    "test": "TS_NODE_PROJECT='tsconfig.json' node_modules/.bin/codeceptjs run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:dxsau/test-base/codecept-mocha.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
