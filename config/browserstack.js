@@ -1,7 +1,7 @@
 const pjson = require('../package.json');
 const pages = require('./pages')
 
-const config = () => ({
+const config = (user, key, useLocal) => ({
     name: pjson.name,
     tests: './src/tests/*.test.js',
     output: './output',
@@ -12,14 +12,33 @@ const config = () => ({
         ...pages
     },
 
+    // Browsers
+    multiple: {
+        all : {
+            browsers: ["chrome", "firefox", "safari"]
+        },
+        chrome: {
+            browsers: ["chrome"]
+        },
+        firefox: {
+            browsers: ["firefox"]
+        },
+        safari: {
+            browsers: ["safari"]
+        }
+    },
+
     // Webdriver config
     helpers: {
         WebDriver: {
+            host: 'hub.browserstack.com',
+            user: user,
+            key: key,
             coloredLogs: true,
             logLevel: 'info',
             browser: 'chrome',
             url: 'http://localhost',
-            smartWait: 5000,
+            smartWait: 20000,
             fullPageScreenshots: true,
         },
     },
@@ -29,8 +48,18 @@ const config = () => ({
 
         // Browserstack Local
         wdio: {
-            enabled: true,
-            services: ['selenium-standalone'],
+            enabled: useLocal,
+            services: ['browserstack'],
+            user: user,
+            key: key,
+            forcedStop: true,
+            browserstackLocal: useLocal,
+            capabilities: {
+                "browserstack.local": useLocal,
+                build: `${pjson.name} Local`,
+                project: pjson.name,
+                name: "name",
+            }
         },
         screenshotOnFail: {
             enabled: true
