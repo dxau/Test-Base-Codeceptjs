@@ -19,7 +19,7 @@ const config = () => ({
             logLevel: 'info',
             browser: 'chrome',
             url: 'http://localhost',
-            smartWait: 5000,
+            smartWait: 20000,
             fullPageScreenshots: true,
         },
     },

@@ -36,7 +36,5 @@ if (process.env.USE_BROWSERSTACK.toLowerCase() === "true") {
   config = genConfig()
 }
 
-console.log(config)
-
-
+// Set conceptjs config
 exports.config = config
