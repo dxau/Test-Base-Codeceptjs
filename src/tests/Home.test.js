@@ -1,19 +1,16 @@
 Feature('View Practise Modules');
 
 Scenario('Check stages exist', (I, Home, Lightbox) => {
-    // Ensure that cache is cleared
-    I.amOnPage("https://www.seleniumeasy.com/test/")
-    I.clearLocalStorage()
-    
     I.amOnPage("https://www.seleniumeasy.com/test/")
     Lightbox.closeLightbox()
     Home.scrollToComponent()
+
     Home.startPractice()
-    I.see("BASIC EXAMPLES TO START WITH SELENIUM")
+    I.waitForText("BASIC")
     Home.goToStageTwo()
-    I.see("INTERMEDIATE EXAMPLES WITH MOST POPULAR COMPONENTS")
+    I.waitForText("INTERMEDIATE")
     Home.goToStageThree()
-    I.see("ADVANCED EXAMPLES WITH COMPONENTS")
+    I.waitForText("ADVANCED")
     Home.goToComplete()
-    I.see("THANKS FOR STAYING TUNED! WE ARE DONE")
+    I.waitForText("WE ARE DONE")
 });

@@ -2,7 +2,7 @@ setup:
 	npm install
 
 test.local:
-	npm run test:local
+	npm run test:local --verbose
 
 test.bs.single:
 	npm run test:bs-chrome

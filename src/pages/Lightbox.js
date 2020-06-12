@@ -5,7 +5,7 @@ module.exports = {
     button: {
         close: '#at-cv-lightbox-close',
     },
-
+    
     div: {
         lightbox: '#at-cv-lightbox',
     },

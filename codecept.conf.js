@@ -26,13 +26,13 @@ if (process.env.USE_BROWSERSTACK.toLowerCase() === "true") {
   }
 
   // Get config
-  const genConfig = require('./config/browserstack.js')
+  const genConfig = require('./config/config.browserstack.js')
   config = genConfig(process.env.BROWSERSTACK_USR, process.env.BROWSERSTACK_KEY, ENABLE_BROWSERSTACK_LOCAL)
 
 // local config
 } else {
   USE_BROWSERSTACK = false
-  const genConfig = require('./config/local.js')
+  const genConfig = require('./config/config.local.js')
   config = genConfig()
 }
 

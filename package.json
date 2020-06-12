@@ -16,7 +16,7 @@
   "scripts": {
     "test:local": "node_modules/.bin/codeceptjs run --reporter mochawesome",
     "test:bs-chrome": "node_modules/.bin/codeceptjs run-multiple chrome --reporter mochawesome",
-    "test:bs-all": "node_modules/.bin/codeceptjs run-multiple all --reporter mochawesome"
+    "test:bs-all": "node_modules/.bin/codeceptjs run-multiple --all --reporter mochawesome"
   },
   "repository": {
     "type": "git",

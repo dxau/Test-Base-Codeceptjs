@@ -1,11 +1,12 @@
 const pjson = require('../package.json');
 const pages = require('./pages')
+const { chrome, firefox, safari } = require('./browsers')
 
 const config = (user, key, useLocal) => ({
     name: pjson.name,
     tests: './src/tests/*.test.js',
     output: './output',
-    
+
     // Pages
     include: {
         I: './steps_file.js',
@@ -14,17 +15,14 @@ const config = (user, key, useLocal) => ({
 
     // Browsers
     multiple: {
-        all : {
-            browsers: ["chrome", "firefox", "safari"]
-        },
         chrome: {
-            browsers: ["chrome"]
+            browsers: [chrome]
         },
         firefox: {
-            browsers: ["firefox"]
+            browsers: [firefox]
         },
         safari: {
-            browsers: ["safari"]
+            browsers: [safari]
         }
     },
 
@@ -38,9 +36,25 @@ const config = (user, key, useLocal) => ({
             logLevel: 'info',
             browser: 'chrome',
             url: 'http://localhost',
-            smartWait: 20000,
             fullPageScreenshots: true,
+            desiredCapabilities: {
+                windowSize: "maximize",
+                "browserstack.local": useLocal,
+                build: `${pjson.name} ${useLocal ? "Local" : "Remote"}`,
+                project: pjson.name,
+                name: `${Date.now()}`,
+            },
+
+            /// Waits
+            smartWait: 20000,
+            waitForTimeout: 10000,
+            waitForElement: 5000,
+            waitForText: 5000,
         },
+
+        Mochawesome: {
+            uniqueScreenshotNames: true
+        }
     },
 
     // Plugins
@@ -54,27 +68,21 @@ const config = (user, key, useLocal) => ({
             key: key,
             forcedStop: true,
             browserstackLocal: useLocal,
-            capabilities: {
-                "browserstack.local": useLocal,
-                build: `${pjson.name} Local`,
-                project: pjson.name,
-                name: "name",
-            }
         },
         screenshotOnFail: {
             enabled: true
         }
     },
     bootstrap: null,
-    
+
     // Reports
     mocha: {
-        "reporterOptions": {
-            "reportDir": "../output",
-            "reportFilename": "testReport"
+        reporterOptions: {
+            reportDir: "../output",
+            reportFilename: "testReport"
         }
     },
-    
+
 })
 
 module.exports = config;
