@@ -1,5 +1,6 @@
 // Paths should be relative from the root of the project
 module.exports = {
-    Home: './src/pages/Home.js',
-    Lightbox: './src/pages/Lightbox.js',
+    Common: './src/pages/_common/__Common.js',
+    Solutions: './src/pages/solutions/_Solutions.js',
+    Home: './src/pages/home/_Home.js',
 }

@@ -5,18 +5,20 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "@wdio/browserstack-service": "^5.22.1",
-    "@wdio/selenium-standalone-service": "^5.16.10",
+    "@wdio/browserstack-service": "^6.1.15",
+    "@wdio/selenium-standalone-service": "^6.1.14",
     "browserstack-local": "^1.4.5",
     "codeceptjs": "^2.6.5",
     "dotenv": "^8.2.0",
     "mocha": "^8.0.1",
-    "mochawesome": "^6.1.1"
+    "mochawesome": "^6.1.1",
+    "webdriverio": "^6.1.17"
   },
   "scripts": {
-    "test:local": "node_modules/.bin/codeceptjs run --reporter mochawesome",
-    "test:bs-chrome": "node_modules/.bin/codeceptjs run-multiple chrome --reporter mochawesome",
-    "test:bs-all": "node_modules/.bin/codeceptjs run-multiple --all --reporter mochawesome"
+    "test:all": "node_modules/.bin/codeceptjs run-multiple --all --reporter mochawesome",
+    "test:chrome": "node_modules/.bin/codeceptjs run-multiple chrome --reporter mochawesome",
+    "test:safari": "node_modules/.bin/codeceptjs run-multiple safari --reporter mochawesome",
+    "test:firefox": "node_modules/.bin/codeceptjs run-multiple firefox --reporter mochawesome"
   },
   "repository": {
     "type": "git",

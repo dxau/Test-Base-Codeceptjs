@@ -20,7 +20,7 @@ module.exports = {
     safari: {
         browser: 'safari',
         desiredCapabilities: {
-            browserVersion: '12',
+            browserVersion: '13.1',
         }
     },
 }

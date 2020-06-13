@@ -1,14 +1,17 @@
 setup:
 	npm install
 
-test.local:
-	npm run test:local --verbose
+test.all:
+	npm run test:all
 
-test.bs.single:
-	npm run test:bs-chrome
+test.chrome:
+	npm run test:chrome
 
-test.bs.multi:
-	npm run test:bs-all
+test.safari:
+	npm run test:safari
+
+test.firefox:
+	npm run test:firefox
 
 list:
 	npx codeceptjs list

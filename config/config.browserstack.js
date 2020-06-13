@@ -2,7 +2,7 @@ const pjson = require('../package.json');
 const pages = require('./pages')
 const { chrome, firefox, safari } = require('./browsers')
 
-const config = (user, key, useLocal) => ({
+const config = (user, key, useLocal, numParallels) => ({
     name: pjson.name,
     tests: './src/tests/*.test.js',
     output: './output',
@@ -16,13 +16,19 @@ const config = (user, key, useLocal) => ({
     // Browsers
     multiple: {
         chrome: {
-            browsers: [chrome]
+            outputName: 'local-chrome',
+            browsers: [chrome],
+            chunks: numParallels,
         },
         firefox: {
-            browsers: [firefox]
+            outputName: 'local-firefox',
+            browsers: [firefox],
+            chunks: numParallels,
         },
         safari: {
-            browsers: [safari]
+            outputName: 'remote-safari',
+            browsers: [safari],
+            chunks: numParallels,
         }
     },
 
@@ -37,8 +43,8 @@ const config = (user, key, useLocal) => ({
             browser: 'chrome',
             url: 'http://localhost',
             fullPageScreenshots: true,
+            windowSize: 'maximize',
             desiredCapabilities: {
-                windowSize: "maximize",
                 "browserstack.local": useLocal,
                 build: `${pjson.name} ${useLocal ? "Local" : "Remote"}`,
                 project: pjson.name,
@@ -78,7 +84,7 @@ const config = (user, key, useLocal) => ({
     // Reports
     mocha: {
         reporterOptions: {
-            reportDir: "../output",
+            reportDir: "./output/reports",
             reportFilename: "testReport"
         }
     },

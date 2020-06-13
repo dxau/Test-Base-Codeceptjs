@@ -1,8 +1,8 @@
 const pjson = require('../package.json');
 const pages = require('./pages')
-const { chrome, safari } = require('./browsers')
+const { chrome, safari, firefox } = require('./browsers')
 
-const config = () => ({
+const config = (numParallels) => ({
     name: pjson.name,
     tests: './src/tests/*.test.js',
     output: './output',
@@ -19,10 +19,9 @@ const config = () => ({
             coloredLogs: true,
             logLevel: 'debug',
             url: 'http://localhost',
-            smartWait: 20000,
             fullPageScreenshots: true,
-            ...safari,
-
+            ...chrome,
+            windowSize: 'maximize',
             // Waits
             smartWait: 20000,
             waitForTimeout: 10000,
@@ -35,10 +34,27 @@ const config = () => ({
         }
     },
 
+    // Browsers
+    multiple: {
+        chrome: {
+            outputName: 'local-chrome',
+            browsers: [chrome],
+            chunks: numParallels,
+        },
+        firefox: {
+            outputName: 'local-firefox',
+            browsers: [firefox],
+            chunks: numParallels,
+        },
+        safari: {
+            outputName: 'remote-safari',
+            browsers: [safari],
+            chunks: numParallels,
+        }
+    },
+
     // Plugins
     plugins: {
-
-        // Browserstack Local
         wdio: {
             enabled: true,
             services: ['selenium-standalone'],
@@ -52,7 +68,7 @@ const config = () => ({
     // Reports
     mocha: {
         reporterOptions: {
-            reportDir: "../output",
+            reportDir: "./output/reports",
             reportFilename: "testReport"
         }
     },
