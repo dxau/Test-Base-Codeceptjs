@@ -29,6 +29,6 @@ if (process.env.USE_BROWSERSTACK.toLowerCase() === "true") {
   const genConfig = require('./config/config.local.js')
   config = genConfig(numParrallels)
 }
-console.log(config.multiple)
+
 // Set conceptjs config
 exports.config = config
