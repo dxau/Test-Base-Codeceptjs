@@ -24,6 +24,10 @@ lint.stdout:
 list:
 	npx codeceptjs list
 
+# report.combine:
+# 	find . -type f -name "report.json" 
+# 	./node_modules/.bin/marge 
+
 sonar: lint.report
 	./node_modules/.bin/sonar-scanner \
 		-Dsonar.projectKey=test \

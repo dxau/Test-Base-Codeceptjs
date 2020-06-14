@@ -1,6 +1,6 @@
 const pjson = require('../package.json');
 const pages = require('./pages');
-const {chrome, safari, firefox} = require('./browsers');
+const multiple = require('./browsers').multiple;
 
 const config = (numParallels) => ({
   name: pjson.name,
@@ -20,8 +20,8 @@ const config = (numParallels) => ({
       logLevel: 'debug',
       url: 'http://localhost',
       fullPageScreenshots: true,
-      ...chrome,
-      windowSize: 'maximize',
+      browser: 'chrome',
+      // windowSize: 'maximize',
       // Waits
       smartWait: 20000,
       waitForTimeout: 10000,
@@ -35,23 +35,7 @@ const config = (numParallels) => ({
   },
 
   // Browsers
-  multiple: {
-    chrome: {
-      outputName: 'local-chrome',
-      browsers: [chrome],
-      chunks: numParallels,
-    },
-    firefox: {
-      outputName: 'local-firefox',
-      browsers: [firefox],
-      chunks: numParallels,
-    },
-    safari: {
-      outputName: 'remote-safari',
-      browsers: [safari],
-      chunks: numParallels,
-    },
-  },
+  multiple: multiple(numParallels),
 
   // Plugins
   plugins: {
@@ -63,7 +47,8 @@ const config = (numParallels) => ({
       enabled: true,
     },
   },
-  bootstrap: null,
+  bootstrapAll: './config/scripts.js',
+  teardownAll: './config/scripts.js',
 
   // Reports
   mocha: {

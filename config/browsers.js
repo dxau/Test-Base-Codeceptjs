@@ -1,4 +1,19 @@
-module.exports = {
+module.exports.multiple = (numParallels) => ({
+  chrome: {
+    browsers: [browsers.chrome],
+    chunks: numParallels,
+  },
+  firefox: {
+    browsers: [browsers.firefox],
+    chunks: numParallels,
+  },
+  safari: {
+    browsers: [browsers.safari],
+    chunks: numParallels,
+  },
+});
+
+const browsers = {
   chrome: {
     browser: 'chrome',
     capabilities: {

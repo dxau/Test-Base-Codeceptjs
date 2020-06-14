@@ -81,8 +81,8 @@ BROWSERSTACK_KEY=<YOUR_BROWSERSTACK_KEY>
     make test.chrome    # Runs the tests in chrome
     make test.safari    # Runs the tests in safari 
     make test.firefox   # Runs the tests in firefox 
-    make list           # list all the codeceptjs methods you can uses for this base
-    make lint           # Uses ESLint to statically analyze code to ensure standards are met
+    make lint.stdout    # Outputs to console. Uses ESLint to statically analyze code to ensure standards are met
+    make lint.report    # Outputs to json file. Uses ESLint to statically analyze code to ensure standards are met
     make sonar          # Uses sonarqube and eslint to analyse code and check for issues. Need to have sonarqube setup locally  
 ```
 

@@ -1,6 +1,6 @@
 const pjson = require('../package.json');
 const pages = require('./pages');
-const {chrome, firefox, safari} = require('./browsers');
+const multiple = require('./browsers').multiple;
 
 const config = (user, key, useLocal, numParallels) => ({
   name: pjson.name,
@@ -14,23 +14,7 @@ const config = (user, key, useLocal, numParallels) => ({
   },
 
   // Browsers
-  multiple: {
-    chrome: {
-      outputName: 'local-chrome',
-      browsers: [chrome],
-      chunks: numParallels,
-    },
-    firefox: {
-      outputName: 'local-firefox',
-      browsers: [firefox],
-      chunks: numParallels,
-    },
-    safari: {
-      outputName: 'remote-safari',
-      browsers: [safari],
-      chunks: numParallels,
-    },
-  },
+  multiple: multiple(numParallels),
 
   // Webdriver config
   helpers: {
@@ -79,7 +63,8 @@ const config = (user, key, useLocal, numParallels) => ({
       enabled: true,
     },
   },
-  bootstrap: null,
+  bootstrapAll: './config/scripts.js',
+  teardownAll: './config/scripts.js',
 
   // Reports
   mocha: {

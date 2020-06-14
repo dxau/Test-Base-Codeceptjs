@@ -17,6 +17,7 @@
   },
   "rules": {
     "newIsCapExceptions": 0,
-    "new-cap": 0
+    "new-cap": 0,
+    "max-len": ["error", { "code": 80 }]
   }
 }

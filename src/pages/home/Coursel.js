@@ -5,7 +5,8 @@ module.exports = {
   root: '#main-content',
 
   button: {
-    slide: '//*[@id="cesis_button_exq66ea529o883vw941m"]/span[2]',
+    // eslint-disable-next-line max-len
+    slideOne: '/html/body/div[2]/div[2]/div/div/div[1]/div[1]/div/div/div/div[2]/div/div[3]/div/div[2]/div/div/div/div/div[3]/a',
   },
 
   waitLoad() {
@@ -13,6 +14,6 @@ module.exports = {
   },
 
   pressSlideOneButton() {
-    I.click(this.button.slide);
+    I.click(this.button.slideOne);
   },
 };

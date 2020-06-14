@@ -13,8 +13,10 @@
     "eslint": "^7.2.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-security-node": "^1.0.12",
+    "glob": "^7.1.6",
     "mocha": "^8.0.1",
     "mochawesome": "^6.1.1",
+    "mochawesome-merge": "^4.1.0",
     "sonarqube-scanner": "^2.6.0",
     "webdriverio": "^6.1.17"
   },
