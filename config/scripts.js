@@ -44,6 +44,8 @@ module.exports = {
               }
             },
         );
+
+        // Copy screenshots to final report
         glob(`./output/${browser}*/*.png`, (err, files) => {
           if (err) {
             console.error(err);
