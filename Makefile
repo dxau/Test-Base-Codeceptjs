@@ -13,5 +13,14 @@ test.safari:
 test.firefox:
 	npm run test:firefox
 
+lint:
+	npm run lint
+
 list:
 	npx codeceptjs list
+
+sonar:
+	sonar-scanner \
+		-Dsonar.projectKey=test \
+		-Dsonar.sources="./" \
+		-Dsonar.coverage.exclusions=./node_modules/**/*,output/**/*

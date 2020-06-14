@@ -1,6 +1,13 @@
-node_modules/
-_output/
+# Logs
 local.log
-.env
 browserstack.err
+
+# Outputs
 output/
+.scannerwork/
+
+# Files
+.env
+
+# Node Libraries 
+node_modules/
