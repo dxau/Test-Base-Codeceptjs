@@ -1,5 +1,5 @@
-const Header = require("./Header");
+const Header = require('./Header');
 
 module.exports = {
-    header: Header,
-} 
+  header: Header,
+};

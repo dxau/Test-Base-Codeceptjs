@@ -1,9 +1,9 @@
-const { I } = inject();
+const {I} = inject();
 
 module.exports = {
-    root: '.tab-box.tabs-container',
+  root: '.tab-box.tabs-container',
 
-    waitLoad() {
-        I.waitForElement(this.root)
-    },
-}
+  waitLoad() {
+    I.waitForElement(this.root);
+  },
+};

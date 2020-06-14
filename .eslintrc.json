@@ -1,0 +1,18 @@
+{
+  "root":true,
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2020": true
+  },
+  "extends": [
+    "google"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 11
+  },
+  "rules": {
+    "newIsCapExceptions": 0,
+    "new-cap": 0
+  }
+}

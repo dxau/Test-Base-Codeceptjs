@@ -1,7 +1,7 @@
-const Coursel = require("./Coursel")
+const Coursel = require('./Coursel');
 
 module.exports = {
-    path: '/',
+  path: '/',
 
-    coursel: Coursel,
-} 
+  coursel: Coursel,
+};
