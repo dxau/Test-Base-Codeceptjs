@@ -1,3 +1,5 @@
+PROJECT_NAME = "Codeceptjs"
+
 setup:
 	npm install
 
@@ -13,14 +15,19 @@ test.safari:
 test.firefox:
 	npm run test:firefox
 
-lint:
-	npm run lint
+lint.report:
+	npm run lint:report
+
+lint.stdout:
+	npm run lint:stdout
 
 list:
 	npx codeceptjs list
 
-sonar:
-	sonar-scanner \
+sonar: lint.report
+	./node_modules/.bin/sonar-scanner \
 		-Dsonar.projectKey=test \
-		-Dsonar.sources="./" \
-		-Dsonar.coverage.exclusions=./node_modules/**/*,output/**/*
+		-Dsonar.sources='./' \
+		-Dsonar.coverage.exclusions=./node_modules/**/*,output/**/* \
+		-Dsonar.eslint.reportPaths=./output/eslint/report.json \
+		

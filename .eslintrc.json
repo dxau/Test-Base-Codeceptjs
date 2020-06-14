@@ -5,8 +5,12 @@
     "commonjs": true,
     "es2020": true
   },
+  "plugins": [
+    "security-node"
+  ],
   "extends": [
-    "google"
+    "google",
+    "plugin:security-node/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 11

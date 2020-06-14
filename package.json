@@ -12,8 +12,10 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.2.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-security-node": "^1.0.12",
     "mocha": "^8.0.1",
     "mochawesome": "^6.1.1",
+    "sonarqube-scanner": "^2.6.0",
     "webdriverio": "^6.1.17"
   },
   "scripts": {
@@ -21,7 +23,8 @@
     "test:chrome": "node_modules/.bin/codeceptjs run-multiple chrome --reporter mochawesome",
     "test:safari": "node_modules/.bin/codeceptjs run-multiple safari --reporter mochawesome",
     "test:firefox": "node_modules/.bin/codeceptjs run-multiple firefox --reporter mochawesome",
-    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore ."
+    "lint:report": "./node_modules/.bin/eslint --ignore-path .gitignore -o ./output/eslint/report.json .",
+    "lint:stdout": "./node_modules/.bin/eslint --ignore-path .gitignore --color ."
   },
   "repository": {
     "type": "git",
