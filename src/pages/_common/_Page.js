@@ -1,5 +1,9 @@
-const Header = require('./Header');
+import {Header} from './Header';
 
-module.exports = {
+const Page = {
+  path: '/',
+
   header: Header,
 };
+
+export default Page;

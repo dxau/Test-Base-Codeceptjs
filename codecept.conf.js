@@ -1,4 +1,4 @@
-// Configs
+require('import-export');
 require('dotenv').config({path: './.env'});
 
 // Checks that variables are set

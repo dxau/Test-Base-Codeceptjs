@@ -1,6 +1,6 @@
 const {I} = inject();
 
-module.exports = {
+export const Content = {
   root: '.tab-box.tabs-container',
 
   waitLoad() {

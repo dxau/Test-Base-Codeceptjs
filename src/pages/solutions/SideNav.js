@@ -1,6 +1,6 @@
 const {I} = inject();
 
-module.exports = {
+export const SideNav = {
   root: '.tabs',
 
   button: {

@@ -1,4 +1,4 @@
-module.exports.multiple = (numParallels) => ({
+export const multiple = (numParallels) => ({
   chrome: {
     browsers: [browsers.chrome],
     chunks: numParallels,

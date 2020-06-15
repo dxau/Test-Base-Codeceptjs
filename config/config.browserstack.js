@@ -1,6 +1,6 @@
-const pjson = require('../package.json');
-const pages = require('./pages');
-const multiple = require('./browsers').multiple;
+import pjson from '../package.json';
+import {PageObjects} from './pages';
+import {multiple} from './browsers';
 
 const config = (user, key, useLocal, numParallels) => ({
   name: pjson.name,
@@ -10,7 +10,7 @@ const config = (user, key, useLocal, numParallels) => ({
   // Pages
   include: {
     I: './steps_file.js',
-    ...pages,
+    ...PageObjects,
   },
 
   // Browsers
@@ -45,6 +45,11 @@ const config = (user, key, useLocal, numParallels) => ({
     Mochawesome: {
       uniqueScreenshotNames: true,
     },
+  },
+
+  rerun: {
+    minSuccess: 1,
+    maxReruns: 3,
   },
 
   // Plugins

@@ -1,6 +1,6 @@
-const pjson = require('../package.json');
-const pages = require('./pages');
-const multiple = require('./browsers').multiple;
+import pjson from '../package.json';
+import {PageObjects} from './pages';
+import {multiple} from './browsers';
 
 const config = (numParallels) => ({
   name: pjson.name,
@@ -10,7 +10,7 @@ const config = (numParallels) => ({
   // Pages
   include: {
     I: './steps_file.js',
-    ...pages,
+    ...PageObjects,
   },
 
   // Webdriver config
@@ -21,7 +21,8 @@ const config = (numParallels) => ({
       url: 'http://localhost',
       fullPageScreenshots: true,
       browser: 'chrome',
-      // windowSize: 'maximize',
+      windowSize: 'maximize',
+
       // Waits
       smartWait: 20000,
       waitForTimeout: 10000,
@@ -36,6 +37,11 @@ const config = (numParallels) => ({
 
   // Browsers
   multiple: multiple(numParallels),
+
+  rerun: {
+    minSuccess: 1,
+    maxReruns: 3,
+  },
 
   // Plugins
   plugins: {

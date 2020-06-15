@@ -1,6 +1,6 @@
 const {I} = inject();
 
-module.exports = {
+export const Header = {
   root: '#cesis_header',
 
   button: {

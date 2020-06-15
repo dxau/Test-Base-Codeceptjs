@@ -1,7 +1,10 @@
-const Coursel = require('./Coursel');
+import {Coursel} from './Coursel';
 
-module.exports = {
+
+const Page = {
   path: '/',
 
   coursel: Coursel,
 };
+
+export default Page;

@@ -1,36 +1,36 @@
 Feature('Check solutions are accessable');
 
-Scenario('By coursel', (I, Home, Solutions) => {
-  // Nav to solutions page
+Scenario('By coursel', (I, HomePage, SolutionsPage) => {
+  // Nav to Solutions page
   I.amOnPage('https://dx.com.au/');
-  Home.coursel.waitLoad();
-  Home.coursel.pressSlideOneButton();
+  HomePage.coursel.waitLoad();
+  HomePage.coursel.pressSlideOneButton();
 
   // Check content
-  Solutions.content.waitLoad();
-  Solutions.sideNav.pressQE();
-  I.see('Quality Engineering', Solutions.content.root);
-  Solutions.sideNav.pressDevOps();
-  I.see('DevOps', Solutions.content.root);
-  Solutions.sideNav.pressRPA();
-  I.see('Robotic Process Automation', Solutions.content.root);
-  Solutions.sideNav.pressNetworks();
-  I.see('NETWORK', Solutions.content.root);
+  SolutionsPage.content.waitLoad();
+  SolutionsPage.sideNav.pressQE();
+  I.see('Quality Engineering', SolutionsPage.content.root);
+  SolutionsPage.sideNav.pressDevOps();
+  I.see('DevOps', SolutionsPage.content.root);
+  SolutionsPage.sideNav.pressRPA();
+  I.see('Robotic Process Automation', SolutionsPage.content.root);
+  SolutionsPage.sideNav.pressNetworks();
+  I.see('NETWORK', SolutionsPage.content.root);
 });
 
-Scenario('By main nav', (I, Common, Solutions) => {
-  // Nav to solutions page
+Scenario('By main nav', (I, Common, SolutionsPage) => {
+  // Nav to Solutions page
   I.amOnPage('https://dx.com.au/');
   Common.header.pressSolutions();
 
   // Check content
-  Solutions.content.waitLoad();
-  Solutions.sideNav.pressQE();
-  I.see('Quality Engineering', Solutions.content.root);
-  Solutions.sideNav.pressDevOps();
-  I.see('DevOps', Solutions.content.root);
-  Solutions.sideNav.pressRPA();
-  I.see('Robotic Process Automation', Solutions.content.root);
-  Solutions.sideNav.pressNetworks();
-  I.see('NETWORK', Solutions.content.root);
+  SolutionsPage.content.waitLoad();
+  SolutionsPage.sideNav.pressQE();
+  I.see('Quality Engineering', SolutionsPage.content.root);
+  SolutionsPage.sideNav.pressDevOps();
+  I.see('DevOps', SolutionsPage.content.root);
+  SolutionsPage.sideNav.pressRPA();
+  I.see('Robotic Process Automation', SolutionsPage.content.root);
+  SolutionsPage.sideNav.pressNetworks();
+  I.see('NETWORK', SolutionsPage.content.root);
 });

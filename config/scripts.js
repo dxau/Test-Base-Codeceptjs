@@ -1,22 +1,21 @@
-const {merge} = require('mochawesome-merge');
-const fs = require('fs');
-const glob = require('glob');
-const path = require('path');
-const {exec} = require('child_process');
+import {merge} from 'mochawesome-merge';
+import fs from 'fs';
+import glob from 'glob';
+import path from 'path';
+import {exec} from 'child_process';
 
-module.exports = {
+// Delete old outputs on run
+export const bootstrapAll = (done) => {
+  fs.rmdirSync('./output', {recursive: true});
+  done();
+};
 
-  // Delete old outputs on run
-  bootstrapAll: function(done) {
-    fs.rmdirSync('./output', {recursive: true});
-    done();
-  },
-
-  // Combine reports across parrallels
-  teardownAll: function(done) {
-    const multipleKeys = require('./browsers').multiple;
-    for ( const browser of Object.keys(multipleKeys(1))) {
-      // File and folder for report
+// Combine reports across parrallels
+export const teardownAll = (done) => {
+  const multipleKeys = require('./browsers').multiple;
+  for ( const browser of Object.keys(multipleKeys(1))) {
+    // File and folder for report
+    if (isDirSubExist('./output', browser)) {
       const folder = `./output/${browser}`;
       const file = 'final.json';
 
@@ -42,12 +41,20 @@ module.exports = {
         });
       }).catch();
     }
-    done();
-  },
+  }
+  done();
+};
+
+// Checks if a directory exist beginning with a certain string
+const isDirSubExist = (source, substring) => {
+  const folders = fs.readdirSync(source, {withFileTypes: true})
+      .filter((dirent) => dirent.isDirectory() && dirent.name.startsWith(substring))
+      .map((dirent) => dirent.name);
+  return folders.length > 0;
 };
 
 // Uses the Marge Binary to create html report from json
-createMargeReport = function(folder, file) {
+const createMargeReport = (folder, file) => {
   const margeBin = './node_modules/.bin/marge';
   exec(`${margeBin} -o ${folder} ${folder}/${file}`, (err, stdout) => {
     if (err) console.error(`exec error: ${err}`);
@@ -56,7 +63,7 @@ createMargeReport = function(folder, file) {
 };
 
 // Copies files to specific folder
-copyFiles = function(files, folder) {
+const copyFiles = (files, folder) => {
   for (const file of files) {
     fs.copyFile(file, `${folder}/${path.basename(file)}`, (err) => {
       if (err) throw err;

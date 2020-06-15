@@ -1,6 +1,6 @@
 const {I} = inject();
 
-module.exports = {
+export const Coursel = {
 
   root: '#main-content',
 

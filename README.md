@@ -52,6 +52,7 @@ BROWSERSTACK_KEY=<YOUR_BROWSERSTACK_KEY>
     | config.browserstack.js    # Config for running the test browserstack
     | config.local.js           # Config for running the test locally
     | pages.js                  # The list page objects and their pages for the test to use
+    | scripts.js                # The scripts used for bootstrap and teardown codeceptjs
 |
 | src   # This folder all the Page Objects and test scripts
 |---|
@@ -88,4 +89,4 @@ BROWSERSTACK_KEY=<YOUR_BROWSERSTACK_KEY>
 
 ## Author
 - Marcus Lau - marcus.wl345@gmail.com
-- Patrick Tsang - Patrick.Tsang@dx.com.au
+- Patrick Tsang - Patrick.tsang@dx.com.au

@@ -1,9 +1,11 @@
-const Content = require('./Content');
-const SideNav = require('./SideNav');
+import {Content} from './Content';
+import {SideNav} from './SideNav';
 
-module.exports = {
+const Page = {
   path: '/solutions',
 
   content: Content,
   sideNav: SideNav,
 };
+
+export default Page;

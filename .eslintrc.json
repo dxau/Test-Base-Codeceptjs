@@ -2,22 +2,27 @@
   "root":true,
   "env": {
     "browser": true,
+    "node": true,
     "commonjs": true,
-    "es2020": true
+    "es2020": true,
+    "codeceptjs/codeceptjs": true
   },
   "plugins": [
-    "security-node"
+    "security-node",
+    "codeceptjs"
   ],
   "extends": [
     "google",
-    "plugin:security-node/recommended"
+    "plugin:security-node/recommended",
+    "eslint:recommended"
   ],
   "parserOptions": {
-    "ecmaVersion": 11
+    "ecmaVersion": 11,
+    "sourceType": "module"
   },
   "rules": {
     "newIsCapExceptions": 0,
     "new-cap": 0,
-    "max-len": ["error", { "code": 80 }]
+    "max-len": ["error", { "code": 100 }]
   }
 }
